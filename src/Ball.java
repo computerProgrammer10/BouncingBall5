@@ -39,28 +39,62 @@ public class Ball {
         }
     }
 
-//    public void move(){
-//        x += speedX;
-//        y += speedY;
-//        if (y+20>thing.getHeight()) speedY *=-1;
-//        if (x>thing.getWidth()) speedX *=-1;
-//        if (y<0) speedY *=-1;
-//        if (x+20<0) speedX *=-1;
-//    }
+   // public void move(){
+   //     x += speedX;
+   //     y += speedY;
+   //     if (y+20>thing.getHeight()) speedY *=-1;
+   //     if (x>thing.getWidth()) speedX *=-1;
+   //     if (y<0) speedY *=-1;
+   //     if (x+20<0) speedX *=-1;
+   // }
+  public void swapXSpeed(){
+    speedX *=-1;
+  }
+  public void swapYSpeed(){
+    speedY *=-1;
+  }
+  
     public static void bounceBalls(Ball[] ballsToCheck){
         for (Ball hi: ballsToCheck)
             for (Ball bye: ballsToCheck){
                 if (hi!=bye){
-                    // check all corners
-                    // top left
-//                    if(checkTopLeft(hi, bye));
+                    if (bye.getLeftX()<=hi.getLeftX() && hi.getLeftX() <= bye.getRightX()){
+                      if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
+                        hi.swapXSpeed();
+                        hi.swapYSpeed();
+                      }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
+                        hi.swapXSpeed();
+                        hi.swapYSpeed();
+                      }
+                      }else if (bye.getLeftX()<=hi.getRightX() && hi.getLeftX() <= bye.getRightX()){
+                      if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
+                        hi.swapXSpeed();
+                        hi.swapYSpeed();
+                      }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
+                        hi.swapXSpeed();
+                        hi.swapYSpeed();
+                      }
+                      
+                      }
+                    }
                 }
             }
-    }
 
-    private static void checkTopLeft(Ball ball1, Ball ball2){
-//        if (ball1.x + ball1.size <= ball2.x - ball2.size <= ball1.x + ball1.x - ball1.size)
+    public int getLeftX(){
+       return x;
     }
+    public int getRightX(){
+      return x + size;
+    }
+    public int getTopY(){
+      return y;
+    }
+  public int getBottomY(){
+    return y + size;
+  }
+  public int getSize(){
+    return size;
+  }
 
     private static int randomInt(int num1, int num2) {
         int x = num1;

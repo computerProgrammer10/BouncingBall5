@@ -8,7 +8,7 @@ public class MyPanel extends JPanel {
     private boolean rightX = true; private boolean rightY = true;
     public MyPanel(){
         setBackground(Color.GREEN);
-        myBalls = new Ball[2];
+        myBalls = new Ball[10];
         for (int i = 0; i<myBalls.length; i++) {
             myBalls[i] = new Ball();
         }
@@ -22,7 +22,7 @@ public class MyPanel extends JPanel {
             hi.drawBall(g,this);
 //
         }
-//        Ball.bounceBalls(myBalls);
+       Ball.bounceBalls(myBalls);
 //        g.setColor(Color.RED);
 //        g.fillOval(xLoc,yLoc,20,20);
 //        xLoc += xVel;

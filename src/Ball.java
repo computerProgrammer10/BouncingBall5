@@ -53,6 +53,14 @@ public class Ball {
   public void swapYSpeed(){
     speedY *=-1;
   }
+
+  public void setXSpeed(int newSpeed){
+        speedX = newSpeed;
+  }
+    public void setYSpeed(int newSpeed){
+        speedY = newSpeed;
+    }
+    public int getSpeedX(){return speedX;} public int getSpeedY(){return speedY;}
   
     public static void bounceBalls(Ball[] ballsToCheck){
         for (Ball hi: ballsToCheck)
@@ -60,19 +68,27 @@ public class Ball {
                 if (hi!=bye){
                     if (bye.getLeftX()<=hi.getLeftX() && hi.getLeftX() <= bye.getRightX()){
                       if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
-                        hi.swapXSpeed();
-                        hi.swapYSpeed();
+                          //hi.swapXSpeed();
+                          //hi.swapYSpeed();
+                          hi.setXSpeed(bye.getSpeedX()*-1);
+                        hi.setYSpeed(bye.getSpeedY()*-1);
                       }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
-                        hi.swapXSpeed();
-                        hi.swapYSpeed();
+                          //hi.swapXSpeed();
+                          //hi.swapYSpeed();
+                          hi.setXSpeed(bye.getSpeedX()*-1);
+                          hi.setYSpeed(bye.getSpeedY()*-1);
                       }
                       }else if (bye.getLeftX()<=hi.getRightX() && hi.getLeftX() <= bye.getRightX()){
                       if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
-                        hi.swapXSpeed();
-                        hi.swapYSpeed();
+                          //hi.swapXSpeed();
+                          //hi.swapYSpeed();
+                          hi.setXSpeed(bye.getSpeedX()*-1);
+                          hi.setYSpeed(bye.getSpeedY()*-1);
                       }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
-                        hi.swapXSpeed();
-                        hi.swapYSpeed();
+                          //hi.swapXSpeed();
+                          //hi.swapYSpeed();
+                          hi.setXSpeed(bye.getSpeedX()*-1);
+                          hi.setYSpeed(bye.getSpeedY()*-1);
                       }
                       
                       }

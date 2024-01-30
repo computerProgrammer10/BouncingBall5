@@ -8,7 +8,7 @@ public class MyPanel extends JPanel {
     private boolean rightX = true; private boolean rightY = true;
     public MyPanel(){
         setBackground(Color.GREEN);
-        myBalls = new Ball[10];
+        myBalls = new Ball[20];
         for (int i = 0; i<myBalls.length; i++) {
             myBalls[i] = new Ball();
         }

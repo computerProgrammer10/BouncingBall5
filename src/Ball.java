@@ -7,13 +7,14 @@ public class Ball {
     private Color color;
     private int speedX, speedY;
     private int x, y;
+    private boolean alreadyBounced = false;
 
     public Ball(int x, int y){
-        this.x = x; this.y = y; size = 10; speedX = 5; speedY = 5; color = Color.BLUE;
+        this.x = x; this.y = y; size = 10; speedX = 5; speedY = 5; color = Color.BLUE; alreadyBounced = false;
     }
 
     public Ball(){
-         size = randomInt(10,50); this.x = randomInt(0,450-size); this.y = randomInt(0,450-size); speedX = randomInt(-10,10); speedY = randomInt(-10,10); color = new Color(randomInt(0,255),randomInt(0,255),randomInt(0,255));
+         size = randomInt(10,50); this.x = randomInt(0,450-size); this.y = randomInt(0,450-size); speedX = randomInt(-10,10); speedY = randomInt(-10,10); color = new Color(randomInt(0,255),randomInt(0,255),randomInt(0,255)); alreadyBounced = false;
     }
 
     public void drawBall(Graphics g, MyPanel thing){
@@ -54,6 +55,7 @@ public class Ball {
     speedY *=-1;
   }
 
+
   public void setXSpeed(int newSpeed){
         speedX = newSpeed;
   }
@@ -61,37 +63,41 @@ public class Ball {
         speedY = newSpeed;
     }
     public int getSpeedX(){return speedX;} public int getSpeedY(){return speedY;}
-  
+
+//    private static boolean collides(int p1, int p2, int check){
+//        return p1<=check && check<=p2;
+//    }
+
+    private int getCenterX(){
+        return x + size;
+    }
+    private int getCenterY(){
+        return y+size;
+    }
+
     public static void bounceBalls(Ball[] ballsToCheck){
         for (Ball hi: ballsToCheck)
             for (Ball bye: ballsToCheck){
                 if (hi!=bye){
-                    if (bye.getLeftX()<=hi.getLeftX() && hi.getLeftX() <= bye.getRightX()){
-                      if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
-                          //hi.swapXSpeed();
-                          //hi.swapYSpeed();
-                          hi.setXSpeed(bye.getSpeedX()*-1);
-                        hi.setYSpeed(bye.getSpeedY()*-1);
-                      }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
-                          //hi.swapXSpeed();
-                          //hi.swapYSpeed();
-                          hi.setXSpeed(bye.getSpeedX()*-1);
-                          hi.setYSpeed(bye.getSpeedY()*-1);
-                      }
-                      }else if (bye.getLeftX()<=hi.getRightX() && hi.getLeftX() <= bye.getRightX()){
-                      if (bye.getTopY()<=hi.getTopY() && hi.getTopY() <= bye.getBottomY()){
-                          //hi.swapXSpeed();
-                          //hi.swapYSpeed();
-                          hi.setXSpeed(bye.getSpeedX()*-1);
-                          hi.setYSpeed(bye.getSpeedY()*-1);
-                      }else if(bye.getTopY()<=hi.getBottomY() && hi.getTopY() <= bye.getBottomY()){
-                          //hi.swapXSpeed();
-                          //hi.swapYSpeed();
-                          hi.setXSpeed(bye.getSpeedX()*-1);
-                          hi.setYSpeed(bye.getSpeedY()*-1);
-                      }
-                      
-                      }
+
+//                    if (collides(bye.getLeftX(), bye.getRightX(), hi.getLeftX())){
+//                      if (collides(bye.getTopY(), bye.getBottomY(), hi.getTopY())){
+//                          hi.swapXSpeed();
+//                          hi.swapYSpeed();
+//                      }else if(collides(bye.getTopY(), bye.getBottomY(), hi.getBottomY())){
+//                          hi.swapXSpeed();
+//                          hi.swapYSpeed();
+//                      }
+//                      }else if (collides(bye.getLeftX(), bye.getRightX(), hi.getRightX())){
+//                        if (collides(bye.getTopY(), bye.getBottomY(), hi.getTopY())){
+//                            hi.swapXSpeed();
+//                            hi.swapYSpeed();
+//                        }else if(collides(bye.getTopY(), bye.getBottomY(), hi.getBottomY())){
+//                            hi.swapXSpeed();
+//                            hi.swapYSpeed();
+//                        }
+//
+//                      }
                     }
                 }
             }

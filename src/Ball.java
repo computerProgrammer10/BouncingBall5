@@ -69,7 +69,7 @@ public class Ball {
 //    }
 
     private int getCenterX(){
-        return x + size;
+        return x+size;
     }
     private int getCenterY(){
         return y+size;
@@ -78,8 +78,23 @@ public class Ball {
     public static void bounceBalls(Ball[] ballsToCheck){
         for (Ball hi: ballsToCheck)
             for (Ball bye: ballsToCheck){
-                if (hi!=bye){
-
+                if (!hi.equals(bye)){
+                  // check the distance between the points
+                  int distance = (int)Math.sqrt(Math.pow(hi.getCenterX() - bye.getCenterX(), 2)+(Math.pow(hi.getCenterY() - bye.getCenterY(), 2)));
+                  if (distance<=(hi.getSize()+bye.getSize())/2){
+                    // set the speed of the ball based on the direction the other ball is in. this is to prevent infinite bouncing possibly
+                    if (hi.getCenterX()<bye.getCenterX()){
+                      hi.setXSpeed(Math.abs(hi.getSpeedX())*-1);
+                    }else{
+                      hi.setXSpeed(Math.abs(hi.getSpeedX()));
+                    }
+                    
+                    if (hi.getCenterY()<bye.getCenterY()){
+                      hi.setYSpeed(Math.abs(hi.getSpeedY())*-1);
+                    }else{
+                      hi.setYSpeed(Math.abs(hi.getSpeedY()));
+                    }
+                  }
 //                    if (collides(bye.getLeftX(), bye.getRightX(), hi.getLeftX())){
 //                      if (collides(bye.getTopY(), bye.getBottomY(), hi.getTopY())){
 //                          hi.swapXSpeed();

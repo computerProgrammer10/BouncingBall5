@@ -8,7 +8,7 @@ public class MyPanel extends JPanel {
     private boolean rightX = true; private boolean rightY = true;
     public MyPanel(){
         setBackground(Color.GREEN);
-        myBalls = new Ball[20];
+        myBalls = new Ball[5];
         for (int i = 0; i<myBalls.length; i++) {
             myBalls[i] = new Ball();
         }
@@ -36,7 +36,7 @@ public class MyPanel extends JPanel {
 //
 //        g.fill3DRect(50, 50, 250, 250, false);
         try {
-            Thread.sleep(10);
+            Thread.sleep(5);
         }
         catch (Exception e){
             System.out.println(e);

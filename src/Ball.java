@@ -14,7 +14,14 @@ public class Ball {
     }
 
     public Ball(){
-         size = randomInt(10,50); this.x = randomInt(0,450-size); this.y = randomInt(0,450-size); speedX = randomInt(-10,10); speedY = randomInt(-10,10); color = new Color(randomInt(0,255),randomInt(0,255),randomInt(0,255)); alreadyBounced = false;
+         size = randomInt(10,50); this.x = randomInt(0,450-size); this.y = randomInt(0,450-size); color = new Color(randomInt(0,255),randomInt(0,255),randomInt(0,255)); alreadyBounced = false;
+         do{
+             speedX = randomInt(-10,10);
+         }while (speedX == 0);
+         do{
+            speedY = randomInt(-10,10);
+         }while (speedY == 0);
+
     }
 
     public void drawBall(Graphics g, MyPanel thing){
@@ -69,10 +76,10 @@ public class Ball {
 //    }
 
     private int getCenterX(){
-        return x+size;
+        return x+(size/2);
     }
     private int getCenterY(){
-        return y+size;
+        return y+(size/2);
     }
 
     public static void bounceBalls(Ball[] ballsToCheck){
